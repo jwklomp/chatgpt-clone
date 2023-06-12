@@ -3,4 +3,5 @@ export interface StoredValue {
     question: string,
 }
 
-export type GenerateResponseFn = (newQuestion: string, setNewQuestion: (input: string) => void) => void;
+export type SetNewQuestionFn = (input: string) => void;
+export type GenerateResponseFn = (newQuestion: string, setNewQuestion: SetNewQuestionFn) => void;

@@ -4,7 +4,7 @@ import Form from './components/Form.tsx';
 import Answer from './components/Answer.tsx';
 
 import {useState} from 'react';
-import {GenerateResponseFn, StoredValue} from "./types/types.ts";
+import {GenerateResponseFn, SetNewQuestionFn, StoredValue} from "./types/types.ts";
 
 const options: CreateCompletionRequest = {
     model: 'text-davinci-003',
@@ -24,7 +24,7 @@ const App = () => {
 
     const [storedValues, setStoredValues] = useState<Array<StoredValue>>([]);
 
-    const generateResponse: GenerateResponseFn = async (newQuestion: string, setNewQuestion: (input: string) => void) => {
+    const generateResponse: GenerateResponseFn = async (newQuestion: string, setNewQuestion: SetNewQuestionFn) => {
 
         const completeOptions: CreateCompletionRequest = {
             ...options,
