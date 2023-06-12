@@ -1,10 +1,10 @@
 import {Configuration, CreateCompletionRequest, OpenAIApi} from 'openai';
 
-import FormSection from './components/FormSection';
-import AnswerSection from './components/AnswerSection';
+import Form from './components/Form.tsx';
+import Answer from './components/Answer.tsx';
 
 import {useState} from 'react';
-import {GenerateResponse, StoredValue} from "./types/types.ts";
+import {GenerateResponseFn, StoredValue} from "./types/types.ts";
 
 const options: CreateCompletionRequest = {
     model: 'text-davinci-003',
@@ -24,7 +24,7 @@ const App = () => {
 
     const [storedValues, setStoredValues] = useState<Array<StoredValue>>([]);
 
-    const generateResponse: GenerateResponse = async (newQuestion: string, setNewQuestion: any) => {
+    const generateResponse: GenerateResponseFn = async (newQuestion: string, setNewQuestion: (input: string) => void) => {
 
         const completeOptions: CreateCompletionRequest = {
             ...options,
@@ -54,9 +54,8 @@ const App = () => {
                 )}
             </div>
 
-            <FormSection generateResponse={generateResponse}/>
-
-            {storedValues.length > 0 && <AnswerSection storedValues={storedValues}/>}
+            <Form generateResponse={generateResponse}/>
+            {storedValues.length > 0 && <Answer storedValues={storedValues}/>}
         </div>
     );
 };

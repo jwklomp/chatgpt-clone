@@ -1,9 +1,10 @@
 import {StoredValue} from "../types/types.ts";
+import {FC} from "react";
 
-interface AnswerSectionProps {
+interface Props {
     storedValues: Array<StoredValue>;
 }
-const AnswerSection = ({ storedValues }: AnswerSectionProps )=> {
+const Answer: FC<Props>  = ({ storedValues } )=> {
     const copyText = (text: string) => {
         navigator.clipboard.writeText(text);
     };
@@ -31,4 +32,4 @@ const AnswerSection = ({ storedValues }: AnswerSectionProps )=> {
     )
 }
 
-export default AnswerSection;
+export default Answer;

@@ -1,7 +1,6 @@
-
 export interface StoredValue {
     answer: string,
     question: string,
 }
 
-export type GenerateResponse = (newQuestion: string, setNewQuestion: any) => void;
+export type GenerateResponseFn = (newQuestion: string, setNewQuestion: (input: string) => void) => void;

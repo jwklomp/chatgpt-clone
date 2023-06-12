@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import {GenerateResponse} from "../types/types.ts";
+import {FC, useState} from 'react';
+import {GenerateResponseFn} from "../types/types.ts";
 
-interface FormSectionProps {
-    generateResponse: GenerateResponse;
+interface Props {
+    generateResponse: GenerateResponseFn;
 }
-const FormSection = ({ generateResponse }: FormSectionProps) => {
+const Form: FC<Props>  = ({ generateResponse }) => {
     const [newQuestion, setNewQuestion] = useState('');
 
     return (
@@ -22,4 +22,4 @@ const FormSection = ({ generateResponse }: FormSectionProps) => {
         </div>
     )
 }
-export default FormSection;
+export default Form;
